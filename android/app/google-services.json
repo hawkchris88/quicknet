@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1052017966452",
+    "firebase_url": "https://quicknet-8af84.firebaseio.com",
+    "project_id": "quicknet-8af84",
+    "storage_bucket": "quicknet-8af84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052017966452:android:31d352f9a1ceef69a88021",
+        "android_client_info": {
+          "package_name": "devcorp.quicknet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052017966452-vsh6t2n61r7rtktctg4f4t91h5t1t8jv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGUWrowt605E_mYgRyc4qe-LgGvRsWdwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052017966452-vsh6t2n61r7rtktctg4f4t91h5t1t8jv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
