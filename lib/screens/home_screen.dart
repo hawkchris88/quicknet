@@ -9,11 +9,18 @@ class HomeScreen extends StatelessWidget {
         title: Text('Airtime LoadUp'),
         centerTitle: true,
         actions: <Widget>[
-          Icon(Icons.help),
-          SizedBox(
-            width: 10.0,
+          IconButton(
+            icon: Icon(Icons.help),
+            onPressed: () {
+              //do something
+            },
           ),
-          Icon(Icons.more_vert),
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () {
+              //do something
+            },
+          ),
         ],
       ),
     );
