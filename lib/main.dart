@@ -43,20 +43,23 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           Expanded(
             child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
                     'images/scanner.png',
                     height: 200.0,
                     width: 200.0,
                   ),
+                  Text('Scan Voucher'),
                 ],
               ),
               decoration: BoxDecoration(
-                color: Color(0xff348977),
-              ),
-              height: 200.0,
+                  color: Color(0xff348977),
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(30.0),
+                      bottomLeft: Radius.circular(30))),
+              height: 300.0,
             ),
           )
         ],
