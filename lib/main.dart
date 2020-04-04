@@ -38,30 +38,37 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.,
         children: <Widget>[
-          Expanded(
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    'images/scanner.png',
-                    height: 200.0,
-                    width: 200.0,
-                  ),
-                  Text('Scan Voucher'),
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Color(0xff348977),
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(30.0),
-                      bottomLeft: Radius.circular(30))),
-              height: 300.0,
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset(
+                  'images/scanner.png',
+                  height: 200.0,
+                  width: 200.0,
+                ),
+                Text(
+                  'Scan Voucher',
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-          )
+            decoration: BoxDecoration(
+                color: Color(0xff348977),
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(30.0),
+                    bottomLeft: Radius.circular(30))),
+            height: 300.0,
+          ),
+          Column(
+            children: <Widget>[Text('Quick Actions')],
+          ),
         ],
       ),
     );
