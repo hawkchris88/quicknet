@@ -41,12 +41,23 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            child: Column(),
-            decoration: BoxDecoration(
-              color: Color(0xff348977),
+          Expanded(
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    'images/scanner.png',
+                    height: 200.0,
+                    width: 200.0,
+                  ),
+                ],
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xff348977),
+              ),
+              height: 200.0,
             ),
-            height: 200.0,
           )
         ],
       ),
