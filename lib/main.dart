@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'quick net',
       theme: ThemeData(primaryColor: Color(0xff348977)),
-      home: AirtimeScanner(),
+      home: HomeScreen(),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
@@ -9,11 +10,19 @@ class AirtimeScanner extends StatefulWidget {
 }
 
 class _AirtimeScannerState extends State<AirtimeScanner> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    getImage();
+    print('i run');
+  }
+
   String realAirtime;
   int ussdAirtime;
+  TextEditingController controller = TextEditingController();
   void getImage() async {
     final airtimeImage =
-        await ImagePicker.pickImage(source: ImageSource.camera);
+        await ImagePicker.pickImage(source: ImageSource.gallery);
     final airtime = FirebaseVisionImage.fromFile(airtimeImage);
     final airtimeDetector = FirebaseVision.instance.textRecognizer();
     final result = await airtimeDetector.processImage(airtime);
@@ -36,11 +45,9 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
     }
 
     airtimeDetector.close();
-    ussdAirtime = int.parse(realAirtime.trim());
-    if (airtime != null) {
-      launchUssd('*134*$airtime#');
-    }
-    setState(() {});
+
+    controller.text = realAirtime;
+//    setState(() {});
   }
 
   Future<void> launchUssd(String ussdCode) async {
@@ -53,19 +60,39 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
       appBar: AppBar(
         title: Text('Airtime Scanner'),
       ),
-      body: Container(
-        child: Center(
-          child: Text('${ussdAirtime ?? 'click on the scanner button'} done'),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              controller: controller,
+              decoration: InputDecoration(
+                labelText: 'Edit Voucher Code',
+                filled: true,
+              ),
+            ),
+            ButtonBar(
+              children: <Widget>[
+                RaisedButton(
+                  color: Color(0xff348977),
+                  child: Text('Load'),
+                  onPressed: () {
+                    ussdAirtime = int.parse(realAirtime.trim());
+                    if (ussdAirtime != null) {
+                      launchUssd('*134*$ussdAirtime#');
+                    }
+                    controller.clear();
+                    Navigator.pop(context);
+                  },
+                  elevation: 5,
+                )
+              ],
+            )
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          getImage();
-        },
-        tooltip: 'Scan airtime',
-        child: Icon(
-          Icons.scanner,
-        ),
+//          child: Text('${ussdAirtime ?? 'click on the scanner button'} '),
       ),
     );
   }
