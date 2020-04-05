@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quicknet/screens/home_screen.dart';
+import 'screens/airtime_scanner.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'quick net',
       theme: ThemeData(primaryColor: Color(0xff348977)),
       home: HomeScreen(),
     );
