@@ -1,9 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quicknet/widgets/container_icon_and_text.dart';
+import 'airtime_scanner.dart';
+import 'package:ussd/ussd.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String id = 'home_screen';
+  Future<void> launchUssd(String ussdCode) async {
+    Ussd.runUssd(ussdCode);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,14 +45,19 @@ class HomeScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       //do something
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return AirtimeScanner();
+                      }));
                     },
-                    child: CircleAvatar(
-                      radius: 100.0,
-                      backgroundImage: AssetImage('images/scanner.png'),
-                    ),
+                    child: Image.asset('images/scanner.png'),
                   ),
                   GestureDetector(
                     onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return AirtimeScanner();
+                      }));
                       //do something
                     },
                     child: Text(
@@ -81,6 +92,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: 1,
             child: Column(
               children: <Widget>[
                 Expanded(
@@ -98,6 +110,7 @@ class HomeScreen extends StatelessWidget {
                         iconText: 'Check Balance',
                         icon: Icons.account_balance_wallet,
                         onPressed: () {
+                          launchUssd('*124#');
                           //do something
                         },
                       ),
@@ -149,6 +162,51 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+//      body: Column(
+//        crossAxisAlignment: CrossAxisAlignment.start,
+//        children: <Widget>[
+//          Container(
+//            child: Column(
+//              crossAxisAlignment: CrossAxisAlignment.stretch,
+//              mainAxisAlignment: MainAxisAlignment.center,
+//              children: <Widget>[
+//                Image.asset(
+//                  'images/scanner.png',
+//                  height: 200.0,
+//                  width: 200.0,
+//                ),
+//                Text(
+//                  'Scan Voucher',
+//                  style: TextStyle(color: Colors.white, fontSize: 30),
+//                  textAlign: TextAlign.center,
+//                ),
+//              ],
+//            ),
+//            decoration: BoxDecoration(
+//                color: Color(0xff348977),
+//                borderRadius: BorderRadius.only(
+//                    bottomRight: Radius.circular(30.0),
+//                    bottomLeft: Radius.circular(30))),
+//            height: 300.0,
+//          ),
+//          Column(
+//            children: <Widget>[
+//              Text('Quick Actions'),
+//              Row(
+//                mainAxisAlignment: MainAxisAlignment.start,
+//                children: <Widget>[
+//                  Icon(Icons.list),
+//                  Icon(
+//                    Icons.attach_money,
+//                    color: Colors.blue,
+//                  ),
+//                  Icon(Icons.description)
+//                ],
+//              )
+//            ],
+//          ),
+//        ],
+//      ),
     );
   }
 }
