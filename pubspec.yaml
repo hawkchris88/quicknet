@@ -27,6 +27,8 @@ dependencies:
   firebase_ml_vision: ^0.9.3+8
   ussd: ^0.0.2+1
   animated_text_kit: ^2.0.0
+  flutter_camera_ml_vision: ^2.2.5
+
 
 dev_dependencies:
   flutter_test:

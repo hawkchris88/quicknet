@@ -22,7 +22,7 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
   TextEditingController controller = TextEditingController();
   void getImage() async {
     final airtimeImage =
-        await ImagePicker.pickImage(source: ImageSource.gallery);
+        await ImagePicker.pickImage(source: ImageSource.camera);
     final airtime = FirebaseVisionImage.fromFile(airtimeImage);
     final airtimeDetector = FirebaseVision.instance.textRecognizer();
     final result = await airtimeDetector.processImage(airtime);
