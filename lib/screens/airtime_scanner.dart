@@ -36,6 +36,7 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
       for (TextLine line in block.lines) {
         // Same getters as TextBlock
         for (TextElement element in line.elements) {
+          print(element.text);
           if (element.text.trim().length == 14 ||
               element.text.trim().length == 16) {
             realAirtime = element.text.trim().toString();
@@ -79,12 +80,12 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
                   color: Color(0xff348977),
                   child: Text('Load'),
                   onPressed: () {
-                    ussdAirtime = int.parse(realAirtime.trim());
-                    if (ussdAirtime != null) {
+                    if (realAirtime != null) {
+                      ussdAirtime = int.parse(realAirtime.trim());
                       launchUssd('*134*$ussdAirtime#');
+                      controller.clear();
+                      Navigator.pop(context);
                     }
-                    controller.clear();
-                    Navigator.pop(context);
                   },
                   elevation: 5,
                 )
