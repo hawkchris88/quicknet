@@ -72,7 +72,6 @@ class HomeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               child: Text(
-                ''
                 'SAVE VOUCHER',
                 style: TextStyle(
                     color: Colors.white,
