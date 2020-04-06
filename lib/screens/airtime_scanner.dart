@@ -14,7 +14,7 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
   void initState() {
     // TODO: implement initState
     getImage();
-    print('i run');
+    print('the $ussdAirtime');
   }
 
   String realAirtime;
@@ -22,7 +22,7 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
   TextEditingController controller = TextEditingController();
   void getImage() async {
     final airtimeImage =
-        await ImagePicker.pickImage(source: ImageSource.gallery);
+        await ImagePicker.pickImage(source: ImageSource.camera);
     final airtime = FirebaseVisionImage.fromFile(airtimeImage);
     final airtimeDetector = FirebaseVision.instance.textRecognizer();
     final result = await airtimeDetector.processImage(airtime);
@@ -38,7 +38,8 @@ class _AirtimeScannerState extends State<AirtimeScanner> {
         for (TextElement element in line.elements) {
           print(element.text);
           if (element.text.trim().length == 14 ||
-              element.text.trim().length == 16) {
+              element.text.trim().length == 16 ||
+              element.text.trim().length == 15) {
             realAirtime = element.text.trim().toString();
           }
         }
